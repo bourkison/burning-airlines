@@ -6,6 +6,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <FlightsShow />
+        <Reservation />
       </div>
     );
   }
