@@ -1,12 +1,8 @@
-<<<<<<< HEAD
-Started GET "/" for 127.0.0.1 at 2017-09-12 16:30:49 +1000
-=======
 Started GET "/" for 127.0.0.1 at 2017-09-12 16:27:25 +1000
->>>>>>> 33f343c0a9b68b1cf87ef9aa73d22bf57688bcca
   
 ActiveRecord::NoDatabaseError (FATAL:  database "burning-airlines-server_development" does not exist
 ):
-  
+
 activerecord (5.1.4) lib/active_record/connection_adapters/postgresql_adapter.rb:699:in `rescue in connect'
 activerecord (5.1.4) lib/active_record/connection_adapters/postgresql_adapter.rb:695:in `connect'
 activerecord (5.1.4) lib/active_record/connection_adapters/postgresql_adapter.rb:220:in `initialize'
@@ -95,9 +91,9 @@ Completed 200 OK in 24ms (Views: 11.4ms | ActiveRecord: 0.0ms)
 
 
 Started GET "/Airplanes" for 127.0.0.1 at 2017-09-12 16:28:35 +1000
-  
+
 ActionController::RoutingError (No route matches [GET] "/Airplanes"):
-  
+
 actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
 web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
@@ -126,9 +122,9 @@ puma (3.10.0) lib/puma/server.rb:437:in `process_client'
 puma (3.10.0) lib/puma/server.rb:301:in `block in run'
 puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
 Started GET "/flight" for 127.0.0.1 at 2017-09-12 16:28:47 +1000
-  
+
 ActionController::RoutingError (No route matches [GET] "/flight"):
-  
+
 actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
 web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
