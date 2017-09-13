@@ -3,7 +3,7 @@ import './Reservation.css'
 import axios from 'axios';
 
 // http://localhost:5000/flights.json
-const SERVER_URL = "http://numbersapi.com/random?json";
+const SERVER_URL = "https://burning-airlines-server.herokuapp.com/flights.json";
 
 function FlightTable (props) {
   let rows = [];
