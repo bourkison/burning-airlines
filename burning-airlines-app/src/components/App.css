@@ -26,3 +26,14 @@
 h1 {
   color: red;
 }
+
+table {
+  border: 1px solid red;
+  margin: 0 auto;
+}
+
+td {
+  display: inline;
+  padding: 20px;
+  font-weight: bold;
+}
