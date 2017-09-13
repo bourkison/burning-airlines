@@ -1,9 +1,9 @@
-td {
+.reservationTable {
   height: 50px;
   width: 50px;
   border: 1px solid;
 }
 
-td:hover {
+.reservationTable:hover {
   background-color: grey;
 }

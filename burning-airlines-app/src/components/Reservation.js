@@ -10,7 +10,7 @@ function FlightTable (props) {
   for (let row = 0; row < props.plane.rows; row++) {
     let cols = [];
     for (let col = 0; col < props.plane.cols; col++) {
-      cols.push(<td key={cols}></td>);
+      cols.push(<td className="reservationTable" key={cols}></td>);
     }
     rows.push(<tr key={rows}>{cols}</tr>);
   }
