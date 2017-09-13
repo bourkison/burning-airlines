@@ -8,18 +8,18 @@ function AllFlights(props) {
   let rows = [];
   for (let row = 0; row < props.flights.length; row++) {
     let cols = [];
-    for (let col = 0; col <= 4; col++) {
+    for (let col = 0; col < 4; col++) {
       if (col === 0) {
         cols.push(<td>{props.flights[row].date}</td>);
       } else if (col === 1) {
         cols.push(<td>{props.flights[row].flight_number}</td>);
       } else if (col === 2) {
         cols.push(<td>{props.flights[row].from} > {props.flights[row].to}</td>);
-      }
-      else {
+      } else if (col === 3) {
         cols.push(<td>{props.flights[row].airplane_id}</td>);
-      }
-    }
+      } 
+    }//col let
+    console.log(rows);
     rows.push(<tr key={rows}>{cols}</tr>)
   }
 
