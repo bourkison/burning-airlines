@@ -39,9 +39,9 @@ function AllFlights(props) {
 }
 
 class Flights extends Component {
-  constructor(props) {
+  constructor(props){
     super(props);
-    this.state = {flights: [], clickedFlight: 0};
+    this.state = {flights: []};
 
     const fetchFlights = () => {
       axios.get(SERVER_URL).then(function(results) {
@@ -56,10 +56,7 @@ class Flights extends Component {
 
   render() {
     return (
-      <div>
-        <AllFlights flights={this.state.flights} />
-        <Reservation flightId={this.state.clickedFlight} />
-      </div>
+      <AllFlights flights={this.state.flights} />
     )
   }
 }
@@ -67,10 +64,17 @@ class Flights extends Component {
 
 
 class FlightsShow extends Component {
+  constructor() {
+    super();
+    this.state = {
+      reservationVisible: false
+    }
+  }
   render () {
     return (
       <div>
         <Flights />
+        <Reservation />
       </div>
     );
   }
