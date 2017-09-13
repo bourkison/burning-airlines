@@ -6,6 +6,7 @@ import axios from 'axios';
 const SERVER_URL = "https://burning-airlines-server.herokuapp.com/flights.json";
 
 function FlightTable (props) {
+
   let rows = [];
   for (let row = 0; row < props.plane.rows; row++) {
     let cols = [];

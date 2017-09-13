@@ -14,7 +14,7 @@ function AllFlights(props) {
       } else if (col === 1) {
         cols.push(<td>{props.flights[row].flight_number}</td>);
       } else if (col === 2) {
-        cols.push(<td>{props.flights[row].from} > {props.flights[row].to}</td>);
+        cols.push(<td> {props.flights[row].from} {props.flights[row].to}</td>);
       } else if (col === 3) {
         cols.push(<td>{props.flights[row].airplane_id}</td>);
       }
