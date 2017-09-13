@@ -48,13 +48,13 @@ class Reservation extends Component {
     console.log(this.state);
   }
 
-
   render() {
     return (
       <div>
         <input type="text" value={this.state.name} onChange={this._handleChange} />
         <p>{this.state.name}</p>
         <p>{this.state.flightNumber}</p>
+        <p>{this.props.flightId}</p>
         <FlightTable plane={this.state.flights[0]} />
       </div>
     );

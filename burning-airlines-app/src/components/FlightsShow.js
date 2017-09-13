@@ -17,7 +17,7 @@ function AllFlights(props) {
         cols.push(<td>{props.flights[row].from} > {props.flights[row].to}</td>);
       } else if (col === 3) {
         cols.push(<td>{props.flights[row].airplane_id}</td>);
-      } 
+      }
     }//col let
     console.log(rows);
     rows.push(<tr key={rows}>{cols}</tr>)
@@ -39,9 +39,9 @@ function AllFlights(props) {
 }
 
 class Flights extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state = {flights: []};
+    this.state = {flights: [], clickedFlight: 0};
 
     const fetchFlights = () => {
       axios.get(SERVER_URL).then(function(results) {
@@ -56,7 +56,10 @@ class Flights extends Component {
 
   render() {
     return (
-      <AllFlights flights={this.state.flights} />
+      <div>
+        <AllFlights flights={this.state.flights} />
+        <Reservation flightId={this.state.clickedFlight} />
+      </div>
     )
   }
 }
@@ -68,7 +71,6 @@ class FlightsShow extends Component {
     return (
       <div>
         <Flights />
-        <Reservation />
       </div>
     );
   }
