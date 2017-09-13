@@ -1,12 +1,12 @@
 Airplane.destroy_all
 
-a1 = Airplane.create :name => "Qantas", :rows => '1', :cols => 'A'
+a1 = Airplane.create :name => "757", :rows => '20', :cols => '4'
 
-a2 = Airplane.create :name => "Virgin", :rows => '2',
-:cols => 'B'
+a2 = Airplane.create :name => "747", :rows => '60',
+:cols => '6'
 
-a3 = Airplane.create :name => "Virgin", :rows => '2',
-:cols => 'C'
+a3 = Airplane.create :name => "757", :rows => '30',
+:cols => '9'
 
 
 
