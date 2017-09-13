@@ -6,6 +6,7 @@ import axios from 'axios';
 const SERVER_URL = "https://burning-airlines-server.herokuapp.com/flights.json";
 
 function FlightTable (props) {
+
   let rows = [];
   for (let row = 0; row < props.plane.rows; row++) {
     let cols = [];
@@ -26,36 +27,39 @@ function FlightTable (props) {
 class Reservation extends Component {
   constructor(props) {
     super(props);
-    this.state = { name: '', flights: [{
-      flightNum: 111,
-      rows: 20,
-      cols: 6
-    }]};
-    this._handleChange = this._handleChange.bind(this);
-
-    const fetchFlight = () => {
-      axios.get(SERVER_URL).then(function(results) {
-        this.setState({flightNumber: results.data.text, name: this.state.name});
-        console.log(this.state.flightNumber);
-      }.bind(this));
-    }
-
-    fetchFlight();
+    this.state = { name: '', flight: {}, searchId: 0};
+    this._handleNameChange = this._handleNameChange.bind(this);
+    this._handleIdChange = this._handleIdChange.bind(this);
   }
 
-  _handleChange(e) {
-    this.setState({ flightNumber: this.state.flightNumber, name: e.target.value });
+  fetchPlane(id) {
+    let url = `https://burning-airlines-server.herokuapp.com/airplanes/${id}.json`;
+    axios.get(url).then(function(results) {
+      this.setState({name: this.state.name, flight: results.data, searchId: this.state.searchId});
+      console.log("********************");
+      console.log(this.state.flight);
+    }.bind(this));
+  }
+
+  _handleNameChange(e) {
+    this.setState({ flight: this.state.flight, name: e.target.value, searchId: this.state.searchId });
     console.log(this.state);
+  }
+
+  _handleIdChange(e) {
+    this.setState({ flight: this.state.flight, name: this.state.name, searchId: e.target.value})
   }
 
   render() {
     return (
       <div>
-        <input type="text" value={this.state.name} onChange={this._handleChange} />
+        <input type="text" value={this.state.name} onChange={this._handleNameChange} />
+        <input type="number" value={this.state.id} onChange={this._handleIdChange} />
+        <input type="button" value="Book Seat" onClick={() => this.fetchPlane(this.state.searchId)}/>
         <p>{this.state.name}</p>
         <p>{this.state.flightNumber}</p>
         <p>{this.props.flightId}</p>
-        <FlightTable plane={this.state.flights[0]} />
+        <FlightTable plane={this.state.flight} />
       </div>
     );
   }
