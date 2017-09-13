@@ -67,9 +67,10 @@ class FlightsShow extends Component {
   constructor() {
     super();
     this.state = {
-      reservationVisible: false
+      isHidden: true
     }
   }
+
   render () {
     return (
       <div>
