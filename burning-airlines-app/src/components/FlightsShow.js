@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
+import Reservation from './Reservation';
+
 
 class FlightDate extends Component {
   constructor(props){
     super(props);
     this.state = {content: ''};
   }
-  
+
   render() {
     return (
       <h2>
@@ -52,6 +54,7 @@ class FlightsShow extends Component {
         <FlightNumber />
         <FlightFromTo />
         <FlightPlane />
+        <Reservation />
       </div>
     );
   }
