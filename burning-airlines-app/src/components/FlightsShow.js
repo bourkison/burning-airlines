@@ -4,10 +4,11 @@ import axios from 'axios';
 
 const SERVER_URL = 'http://localhost:5000/flights.json';
 
-class FlightsInfo extends Component {
+class Flights extends Component {
   constructor(props){
     super(props);
     this.state = {flights: []};
+    this.saveFlight = this.saveFlight.bind(this);
 
     const fetchFlights = () => {
       axios.get(SERVER_URL).then(function(results) {
@@ -22,6 +23,12 @@ class FlightsInfo extends Component {
     axios.post(SERVER_URL, {content: content}).then(function(result){
       console.log(result);
     });
+  }
+
+  flightInfo(){
+    <div>
+        { this.props.flights.map( (f) => <p key={f.id}>{f.content}</p> ) }
+    </div>
   }
 
   render() {
@@ -42,11 +49,13 @@ class FlightsInfo extends Component {
   }
 }
 
+
+
 class FlightsShow extends Component {
   render () {
     return (
       <div>
-        <FlightsInfo />
+        <Flights />
         <Reservation />
       </div>
     );
