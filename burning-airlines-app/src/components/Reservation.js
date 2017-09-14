@@ -7,6 +7,7 @@ const SERVER_URL = "https://burning-airlines-server.herokuapp.com/flights.json";
 let selectedSeat = 0;
 
 function FlightTable (props) {
+
   let rows = [];
   for (let row = 0; row < props.plane.rows; row++) {
     let cols = [];
@@ -20,9 +21,11 @@ function FlightTable (props) {
   }
 
   return (
+  <table>
     <tbody>
       {rows}
     </tbody>
+  </table>
   )
 }
 
@@ -63,7 +66,7 @@ class Reservation extends Component {
 
   render() {
     return (
-      <div>
+      <div className="input">
         <input type="number" value={this.state.id} onChange={this._handleIdChange} />
         <input type="button" value="Get Plane Layout" onClick={() => this.fetchPlane(this.state.searchId)}/>
         <form className="hidden">
