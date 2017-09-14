@@ -36,6 +36,7 @@ h1 {
   display: inline;
   padding: 20px;
   font-weight: bold;
+  margin-bottom: 80px;
 }
 
 
@@ -67,3 +68,7 @@ li {
   padding-right: 20px;
 
 }
+
+/*td:nth-child(even) {
+  background-color: red;
+}*/

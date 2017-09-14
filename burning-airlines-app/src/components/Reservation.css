@@ -2,8 +2,22 @@
   height: 50px;
   width: 50px;
   border: 1px solid;
+  align-items: center;
 }
 
 .reservationTable:hover {
   background-color: grey;
+}
+
+
+
+
+table {
+  margin: auto;
+}
+
+
+
+.input {
+  margin-top: 20px;
 }

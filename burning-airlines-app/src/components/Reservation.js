@@ -17,9 +17,11 @@ function FlightTable (props) {
   }
 
   return (
+  <table>
     <tbody>
       {rows}
     </tbody>
+  </table>
   )
 }
 
@@ -52,7 +54,8 @@ class Reservation extends Component {
 
   render() {
     return (
-      <div>
+      <div className="input">
+
         <input type="text" value={this.state.name} onChange={this._handleNameChange} />
         <input type="number" value={this.state.id} onChange={this._handleIdChange} />
         <input type="button" value="Book Seat" onClick={() => this.fetchPlane(this.state.searchId)}/>
@@ -60,6 +63,7 @@ class Reservation extends Component {
         <p>{this.state.flightNumber}</p>
         <p>{this.props.flightId}</p>
         <FlightTable plane={this.state.flight} />
+
       </div>
     );
   }
