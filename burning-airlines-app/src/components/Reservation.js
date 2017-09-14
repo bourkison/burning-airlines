@@ -10,6 +10,22 @@ let selectedSeat = 0;
 let bookedSeats = [];
 
 function FlightTable (props) {
+  for (let i = 0; i < bookedSeats.length; i++) {
+    if (bookedSeats[i].seatnumber !== null) {
+      let id = bookedSeats[i].seatnumber.toString();
+      if (id.length < 2) {
+        id = "000" + id;
+      }
+      else if (id.length < 4) {
+        id = "0" + id;
+      }
+      if (document.getElementById(id) !== null) {
+        document.getElementById(id).classList.remove('booked');
+      }
+    }
+  }
+
+
 
   let rows = [];
   for (let row = 0; row < props.plane.rows; row++) {
@@ -81,13 +97,17 @@ class Reservation extends Component {
   }
 
   fetchPlane(id) {
-    document.getElementsByClassName("hidden")[0].classList.remove('hidden');
+    if (document.getElementsByClassName("hidden").length > 0) {
+      document.getElementsByClassName("hidden")[0].classList.remove('hidden');
+    }
     let url = `https://burning-airlines-server.herokuapp.com/airplanes/${id}.json`;
     axios.get(url).then(function(results) {
       this.setState({name: this.state.name, flight: results.data, searchId: this.state.searchId});
       console.log("********************");
       console.log(this.state.flight);
     }.bind(this));
+
+    this.forceUpdate();
   }
 
   _bookSeat(e) {
@@ -119,7 +139,9 @@ class Reservation extends Component {
         <input type="button" value="Get Plane Layout" className="button" onClick={() => this.fetchPlane(this.state.searchId)}/>
         </div>
         <form className="hidden" onSubmit={this._bookSeat}>
-          <FlightTable plane={this.state.flight} />
+          <div className="table">
+            <FlightTable plane={this.state.flight} />
+          </div>
           <div className="book-flight">
           <input type="text" value={this.state.name} onChange={this._handleNameChange} />
           <input type="submit" className="button" value="Book Flight" />
