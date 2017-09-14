@@ -7,3 +7,7 @@
 .reservationTable:hover {
   background-color: grey;
 }
+
+table {
+  margin: auto;
+}

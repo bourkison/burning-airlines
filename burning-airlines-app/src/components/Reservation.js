@@ -17,9 +17,11 @@ function FlightTable (props) {
   }
 
   return (
-    <tbody>
-      {rows}
-    </tbody>
+    <table>
+      <tbody>
+        {rows}
+      </tbody>
+    </table>
   )
 }
 
