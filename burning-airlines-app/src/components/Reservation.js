@@ -70,13 +70,13 @@ class Reservation extends Component {
       <div className="input">
       <div className="layout">
         <input type="number" value={this.state.id} onChange={this._handleIdChange} />
-        <input type="button" value="Get Plane Layout" onClick={() => this.fetchPlane(this.state.searchId)}/>
+        <input type="button" value="Get Plane Layout" className="button" onClick={() => this.fetchPlane(this.state.searchId)}/>
         </div>
         <form className="hidden">
           <FlightTable plane={this.state.flight} />
           <div className="book-flight">
           <input type="text" value={this.state.name} onChange={this._handleNameChange} />
-          <input type="submit" value="Book Flight" />
+          <input type="submit" className="button" value="Book Flight" />
           </div>
         </form>
       </div>

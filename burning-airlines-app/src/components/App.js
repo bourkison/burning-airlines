@@ -8,9 +8,9 @@ class App extends Component {
       <div className="App">
       <nav className="nav">
       <ul>
-      <li>Planes</li>
-      <li>Flights</li>
-      <li>Mina</li>
+      <li><a href="#">Planes</a></li>
+      <li><a href="#">Flights</a></li>
+      <li><a href="#">Mina</a></li>
       </ul>
       </nav>
         <h1>Virgin Airlines</h1>

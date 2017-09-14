@@ -26,41 +26,58 @@
 }
 
 h1 {
-  color: red;
+  color: #336768;
   font-family: 'Candal', sans-serif;
 }
 
 .flightsShow {
-  border: 1px solid red;
-  margin: 0 auto;
+    width: 80%;
 }
 
+
+
+
 .flightsShow td {
-  display: inline;
-  padding: 20px;
-  font-weight: bold;
-  margin-bottom: 80px;
+    height: 30px;
 }
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+
+.flightsShow th {
+
+  border: 1px solid #C1EBEC;
+  height: 30px;
+  background-color: #C1EBEC;
+  color: white;
+
+
+}
+
 
 
 .nav {
   width: 100%;
   height: 40px;
-  background-color: red;
+  background-color: #00B0B2;
   margin: 0;
   padding: 0;
-  text-align: center;
   font-family: 'Candal', sans-serif;
-
+  display: flex;
 }
+
+
 
 
 .nav ul {
   display: inline-block;
-  padding: 8px;
-  align-items: center;
+  padding: 0;
   margin: 0;
-
+  list-style-type: none;
+  overflow: hidden;
+  background-color: #00B0B2;
 
 }
 
@@ -69,10 +86,20 @@ li {
   color: white;
   font-size: 20px;
   display: inline;
-  padding-right: 20px;
+  float: left;
 
 }
 
-/*td:nth-child(even) {
-  background-color: red;
-}*/
+li a {
+  text-decoration: none;
+  color: white;
+  display: block;
+  text-align: center;
+  padding: 7px 16px;
+  font-size: 18px;
+
+}
+
+li a:hover {
+  background-color: #336768;
+}
