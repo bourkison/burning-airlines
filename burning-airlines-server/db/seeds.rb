@@ -21,9 +21,9 @@ f3 = Flight.create :flight_number => 97, :date => '13/11/17', :from => 'SYD', :t
 
 Reservation.destroy_all
 
-r1 = Reservation.create :row => '1', :col => 'A'
-r2 = Reservation.create :row => '2', :col => 'B'
-r3 = Reservation.create :row => '2', :col => 'C'
+r1 = Reservation.create :row => '1', :col => 'A', :seatnumber => '1'
+r2 = Reservation.create :row => '2', :col => 'B', :seatnumber => '2'
+r3 = Reservation.create :row => '2', :col => 'C', :seatnumber => '3'
 
 
 User.destroy_all
