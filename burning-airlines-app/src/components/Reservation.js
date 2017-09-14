@@ -4,6 +4,7 @@ import axios from 'axios';
 
 // http://localhost:5000/flights.json
 const SERVER_URL = "https://burning-airlines-server.herokuapp.com/flights.json";
+let selectedSeat = 0;
 
 function FlightTable (props) {
   let rows = [];
@@ -26,6 +27,10 @@ function FlightTable (props) {
 }
 
 function randFunc(e) {
+  if (selectedSeat != 0) {
+    selectedSeat.classList.remove('selected');
+  }
+  selectedSeat = e.target;
   e.target.classList.add('selected');
 }
 
@@ -38,6 +43,7 @@ class Reservation extends Component {
   }
 
   fetchPlane(id) {
+    document.getElementsByClassName("hidden")[0].classList.remove('hidden');
     let url = `https://burning-airlines-server.herokuapp.com/airplanes/${id}.json`;
     axios.get(url).then(function(results) {
       this.setState({name: this.state.name, flight: results.data, searchId: this.state.searchId});
@@ -58,13 +64,13 @@ class Reservation extends Component {
   render() {
     return (
       <div>
-        <input type="text" value={this.state.name} onChange={this._handleNameChange} />
         <input type="number" value={this.state.id} onChange={this._handleIdChange} />
-        <input type="button" value="Book Seat" onClick={() => this.fetchPlane(this.state.searchId)}/>
-        <p>{this.state.name}</p>
-        <p>{this.state.flightNumber}</p>
-        <p>{this.props.flightId}</p>
-        <FlightTable plane={this.state.flight} />
+        <input type="button" value="Get Plane Layout" onClick={() => this.fetchPlane(this.state.searchId)}/>
+        <form className="hidden">
+          <FlightTable plane={this.state.flight} />
+          <input type="text" value={this.state.name} onChange={this._handleNameChange} />
+          <input type="submit" value="Book Flight" />
+        </form>
       </div>
     );
   }
