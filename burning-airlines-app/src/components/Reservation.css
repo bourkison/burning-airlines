@@ -15,12 +15,30 @@
 
 .hidden {
   display: none;
+
 }
 
 table {
   margin: auto;
+
 }
 
 .input {
   margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+
+.layout {
+  margin-bottom: 50px;
+}
+
+
+.book-flight {
+  padding-top: 30px;
+
+}
+
+.booked {
+  background-color: black;
 }

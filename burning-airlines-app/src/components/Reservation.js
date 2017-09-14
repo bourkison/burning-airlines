@@ -5,8 +5,9 @@ import axios from 'axios';
 // http://localhost:5000/flights.json
 const SERVER_URL = "https://burning-airlines-server.herokuapp.com/flights.json";
 const NEW_USER_URL = "https://burning-airlines-server.herokuapp.com/users.json"
-const NEW_RESERVATION_URL = "https://burning-airlines-server.herokuapp.com/reservations.json"
+const RESERVATION_URL = "https://burning-airlines-server.herokuapp.com/reservations.json"
 let selectedSeat = 0;
+let bookedSeats = [];
 
 function FlightTable (props) {
 
@@ -22,7 +23,38 @@ function FlightTable (props) {
     rows.push(<tr key={rows}>{cols}</tr>);
   }
 
+  axios.get(RESERVATION_URL).then(function(result) {
+    bookedSeats = [];
+    console.log(result);
+    console.log("Props", props);
+    for(let i = 0; i < result.data.length; i++) {
+      if (result.data[i].flight_id === props.plane.id) {
+        console.log("MATCH");
+        bookedSeats.push(result.data[i]);
+        console.log("Booked seats in loop", bookedSeats);
+      }
+    }
+    console.log("Booked Seats", bookedSeats);
+    for (let i = 0; i < bookedSeats.length; i++) {
+      if(bookedSeats[i].seatnumber != null) {
+        console.log(bookedSeats[i]);
+
+        let id = bookedSeats[i].seatnumber.toString();
+        if (id.length < 2) {
+          id = "000" + id;
+        }
+        else if (id.length < 4) {
+          id = "0" + id;
+        }
+        if (document.getElementById(id) !== null) {
+          document.getElementById(id).classList.add('booked');
+        }
+      }
+    }
+  });
+
   return (
+
   <table>
     <tbody>
       {rows}
@@ -62,9 +94,9 @@ class Reservation extends Component {
     e.preventDefault();
     let email = `${this.state.name}@gmail.com`
     axios.post(NEW_USER_URL, {user: {name: this.state.name, username: email, password: 'chicken', password_confirmation: 'chicken'}}).then(function(result) {
-      axios.post(NEW_RESERVATION_URL, {reservation: {user_id: result.data.id, flight_id: this.state.flight.id}}).then(function(data) {
-
-      }).bind(this);
+      axios.post(RESERVATION_URL, {reservation: {user_id: result.data.id, flight_id: this.state.flight.id, seatnumber: selectedSeat.id}}).then(function(data) {
+        console.log("Successfully created user and reservation.");
+      }.bind(this));
     }.bind(this));
   }
 
@@ -82,17 +114,21 @@ class Reservation extends Component {
   render() {
     return (
       <div className="input">
-        <input type="number" value={this.state.id} onChange={this._handleIdChange} />
-        <input type="button" value="Get Plane Layout" onClick={() => this.fetchPlane(this.state.searchId)}/>
+        <div className="layout">
+          <input type="number" value={this.state.id} onChange={this._handleIdChange} />
+          <input type="button" value="Get Plane Layout" onClick={() => this.fetchPlane(this.state.searchId)}/>
+        </div>
         <form className="hidden" onSubmit={this._bookSeat}>
           <FlightTable plane={this.state.flight} />
-          <input type="text" placeholder="Your Name" value={this.state.name} onChange={this._handleNameChange} />
-          <input type="submit" value="Book Flight" />
+          <div className="book-flight">
+            <input type="text" value={this.state.name} onChange={this._handleNameChange} />
+            <input type="submit" value="Book Flight" />
+          </div>
         </form>
       </div>
     );
   }
-
 }
+
 
 export default Reservation
