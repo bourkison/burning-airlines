@@ -9,16 +9,18 @@
   background-color: grey;
 }
 
+.selected {
+  background-color: red;
+}
 
-
-
+.hidden {
+  display: none;
+}
 
 table {
 
   margin: auto;
 }
-
-
 
 .input {
   margin-top: 20px;
