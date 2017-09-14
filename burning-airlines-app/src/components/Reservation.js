@@ -10,7 +10,10 @@ function FlightTable (props) {
   for (let row = 0; row < props.plane.rows; row++) {
     let cols = [];
     for (let col = 0; col < props.plane.cols; col++) {
-      cols.push(<td className="reservationTable" key={cols}></td>);
+      let rowS = row > 9 ? "" + row : "0" + row;
+      let colS = col > 9 ? "" + col : "0" + col;
+      let key = rowS + colS
+      cols.push(<td className="reservationTable" key={key} onClick={randFunc} id={key}></td>);
     }
     rows.push(<tr key={rows}>{cols}</tr>);
   }
@@ -22,6 +25,9 @@ function FlightTable (props) {
   )
 }
 
+function randFunc(e) {
+  e.target.classList.add('selected');
+}
 
 class Reservation extends Component {
   constructor(props) {

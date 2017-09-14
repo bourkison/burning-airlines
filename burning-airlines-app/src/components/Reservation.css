@@ -2,8 +2,13 @@
   height: 50px;
   width: 50px;
   border: 1px solid;
+  margin: auto;
 }
 
 .reservationTable:hover {
   background-color: grey;
+}
+
+.selected {
+  background-color: red;
 }
