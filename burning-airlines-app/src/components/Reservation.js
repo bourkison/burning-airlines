@@ -114,15 +114,15 @@ class Reservation extends Component {
   render() {
     return (
       <div className="input">
-        <div className="layout">
-          <input type="number" value={this.state.id} onChange={this._handleIdChange} />
-          <input type="button" value="Get Plane Layout" onClick={() => this.fetchPlane(this.state.searchId)}/>
+      <div className="layout">
+        <input type="number" value={this.state.id} onChange={this._handleIdChange} />
+        <input type="button" value="Get Plane Layout" className="button" onClick={() => this.fetchPlane(this.state.searchId)}/>
         </div>
         <form className="hidden" onSubmit={this._bookSeat}>
           <FlightTable plane={this.state.flight} />
           <div className="book-flight">
-            <input type="text" value={this.state.name} onChange={this._handleNameChange} />
-            <input type="submit" value="Book Flight" />
+          <input type="text" value={this.state.name} onChange={this._handleNameChange} />
+          <input type="submit" className="button" value="Book Flight" />
           </div>
         </form>
       </div>

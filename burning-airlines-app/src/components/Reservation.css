@@ -26,6 +26,9 @@ table {
 .input {
   margin-top: 20px;
   margin-bottom: 40px;
+  background-color: white;
+
+
 }
 
 
@@ -37,6 +40,14 @@ table {
 .book-flight {
   padding-top: 30px;
 
+}
+
+
+.button {
+  background-color: #00B0B2;
+  color: white;
+  border-radius: 4px;
+  margin-left: 10px;
 }
 
 .booked {

@@ -26,13 +26,17 @@ function AllFlights(props) {
 
   return (
     <table className="flightsShow">
+
       <tr>
-        <td>Date</td>
-        <td>Flight</td>
-        <td>From > To</td>
-        <td>Plane</td>
+        <th>Date</th>
+        <th>Flight</th>
+        <th>From > To</th>
+        <th>Plane</th>
+
       </tr>
+
       {rows}
+
     </table>
   );
 
