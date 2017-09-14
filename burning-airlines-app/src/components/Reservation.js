@@ -4,6 +4,8 @@ import axios from 'axios';
 
 // http://localhost:5000/flights.json
 const SERVER_URL = "https://burning-airlines-server.herokuapp.com/flights.json";
+const NEW_USER_URL = "https://burning-airlines-server.herokuapp.com/users.json"
+const NEW_RESERVATION_URL = "https://burning-airlines-server.herokuapp.com/reservations.json"
 let selectedSeat = 0;
 
 function FlightTable (props) {
@@ -43,6 +45,7 @@ class Reservation extends Component {
     this.state = { name: '', flight: {}, searchId: 0};
     this._handleNameChange = this._handleNameChange.bind(this);
     this._handleIdChange = this._handleIdChange.bind(this);
+    this._bookSeat = this._bookSeat.bind(this);
   }
 
   fetchPlane(id) {
@@ -55,6 +58,16 @@ class Reservation extends Component {
     }.bind(this));
   }
 
+  _bookSeat(e) {
+    e.preventDefault();
+    let email = `${this.state.name}@gmail.com`
+    axios.post(NEW_USER_URL, {user: {name: this.state.name, username: email, password: 'chicken', password_confirmation: 'chicken'}}).then(function(result) {
+      axios.post(NEW_RESERVATION_URL, {reservation: {user_id: result.data.id, flight_id: this.state.flight.id}}).then(function(data) {
+
+      }).bind(this);
+    }.bind(this));
+  }
+
   _handleNameChange(e) {
     this.setState({ flight: this.state.flight, name: e.target.value, searchId: this.state.searchId });
     console.log(this.state);
@@ -64,14 +77,16 @@ class Reservation extends Component {
     this.setState({ flight: this.state.flight, name: this.state.name, searchId: e.target.value})
   }
 
+
+
   render() {
     return (
       <div className="input">
         <input type="number" value={this.state.id} onChange={this._handleIdChange} />
         <input type="button" value="Get Plane Layout" onClick={() => this.fetchPlane(this.state.searchId)}/>
-        <form className="hidden">
+        <form className="hidden" onSubmit={this._bookSeat}>
           <FlightTable plane={this.state.flight} />
-          <input type="text" value={this.state.name} onChange={this._handleNameChange} />
+          <input type="text" placeholder="Your Name" value={this.state.name} onChange={this._handleNameChange} />
           <input type="submit" value="Book Flight" />
         </form>
       </div>
